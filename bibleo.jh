@@ -1,0 +1,119 @@
+entity Administrateur {
+	login String
+    mdp String 
+    first_name String
+    last_name String 
+    email String 
+    adresse String
+}
+
+entity Abonne {
+	ncin Integer
+    nom String
+    prenom String
+    date_naissance LocalDate
+    
+}
+// an ignored comment
+/** not an ignored comment */
+entity Livre {
+
+	nom_livre String
+	auteur String
+	edition String
+    date_edition LocalDate
+    nb_pages Integer
+    
+    
+}
+
+entity Categorie {
+
+    nom_categorie String
+    description String 
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Retour {
+
+	date_retour LocalDate,
+	
+}
+
+/**
+ * The Employee entity.
+ */
+entity Emprunt {
+	/**
+	* The firstname attribute.
+	*/
+  
+	date_emprunt LocalDate,
+	date_retour_limite LocalDate
+	
+}
+
+entity Commande {
+
+	qte_commande Integer,
+	date_commande LocalDate,
+    montant Float,
+ 
+}
+
+entity Fournisseur {
+
+	nom_fournisseur String,
+	adresse_fournisseur String
+}
+
+
+
+
+relationship ManyToOne {
+	Livre{categorie} to Categorie
+}
+
+relationship ManyToOne {
+	Retour{livre} to Livre
+}
+
+relationship ManyToOne {
+	Retour{abonne} to Abonne
+}
+
+relationship ManyToOne {
+	Emprunt{livre} to Livre
+}
+relationship ManyToOne {
+	Emprunt{abonne} to Abonne
+}
+
+
+// defining multiple OneToMany relationships with comments
+relationship ManyToMany {
+	Commande{livre} to Livre{commande}
+    
+    }
+	
+
+
+relationship OneToMany{
+	Administrateur{commande} to Commande
+}
+
+// defining multiple oneToOne relationships
+relationship OneToMany {
+	Fournisseur{commande} to Commande
+	}
+
+
+
+dto * with mapstruct
+
+
+// Set an angular suffix
+angularSuffix * with mySuffix
