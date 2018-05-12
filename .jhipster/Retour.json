@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "livre",
+            "otherEntityName": "livre",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "abonne",
+            "otherEntityName": "abonne",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateretour",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180512153806",
+    "javadoc": "Task entity.\n@author The JHipster team.",
+    "entityTableName": "retour",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

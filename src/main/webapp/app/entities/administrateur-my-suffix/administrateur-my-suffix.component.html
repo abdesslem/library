@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Administrateurs</span>
+        <button class="btn btn-primary float-right jh-create-entity create-administrateur-my-suffix" [routerLink]="['/', { outlets: { popup: ['administrateur-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Administrateur
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="administrateurs">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Login</span></th>
+            <th><span>Mdp</span></th>
+            <th><span>Firstname</span></th>
+            <th><span>Lastname</span></th>
+            <th><span>Email</span></th>
+            <th><span>Adresse</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let administrateur of administrateurs ;trackBy: trackId">
+                <td><a [routerLink]="['../administrateur-my-suffix', administrateur.id ]">{{administrateur.id}}</a></td>
+                <td>{{administrateur.login}}</td>
+                <td>{{administrateur.mdp}}</td>
+                <td>{{administrateur.firstname}}</td>
+                <td>{{administrateur.lastname}}</td>
+                <td>{{administrateur.email}}</td>
+                <td>{{administrateur.adresse}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../administrateur-my-suffix', administrateur.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'administrateur-my-suffix/'+ administrateur.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'administrateur-my-suffix/'+ administrateur.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

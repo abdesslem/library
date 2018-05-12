@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span>Livres</span>
+        <button class="btn btn-primary float-right jh-create-entity create-livre-my-suffix" [routerLink]="['/', { outlets: { popup: ['livre-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Livre
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="livres">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nomlivre</span></th>
+            <th><span>Auteur</span></th>
+            <th><span>Edition</span></th>
+            <th><span>Dateedition</span></th>
+            <th><span>Nbpages</span></th>
+            <th><span>Categorie</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let livre of livres ;trackBy: trackId">
+                <td><a [routerLink]="['../livre-my-suffix', livre.id ]">{{livre.id}}</a></td>
+                <td>{{livre.nomlivre}}</td>
+                <td>{{livre.auteur}}</td>
+                <td>{{livre.edition}}</td>
+                <td>{{livre.dateedition | date:'mediumDate'}}</td>
+                <td>{{livre.nbpages}}</td>
+                <td>
+                    <div *ngIf="livre.categorieId">
+                        <a [routerLink]="['../categorie-my-suffix', livre.categorieId  ]" >{{livre.categorieId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../livre-my-suffix', livre.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'livre-my-suffix/'+ livre.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'livre-my-suffix/'+ livre.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

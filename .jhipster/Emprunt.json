@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "livre",
+            "otherEntityName": "livre",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "abonne",
+            "otherEntityName": "abonne",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateemprunt",
+            "javadoc": "The firstname attribute.",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateretourlimite",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180512153807",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "emprunt",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

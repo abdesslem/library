@@ -1,0 +1,42 @@
+
+<div *ngIf="emprunt">
+    <h2><span>Emprunt</span> {{emprunt.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span ngbTooltip="The firstname attribute.">Dateemprunt</span></dt>
+        <dd>
+            <span>{{emprunt.dateemprunt | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Dateretourlimite</span></dt>
+        <dd>
+            <span>{{emprunt.dateretourlimite | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Livre</span></dt>
+        <dd>
+            <div *ngIf="emprunt.livreId">
+                <a [routerLink]="['/livre-my-suffix', emprunt.livreId]">{{emprunt.livreId}}</a>
+            </div>
+        </dd>
+        <dt><span>Abonne</span></dt>
+        <dd>
+            <div *ngIf="emprunt.abonneId">
+                <a [routerLink]="['/abonne-my-suffix', emprunt.abonneId]">{{emprunt.abonneId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'emprunt-my-suffix/'+ emprunt.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

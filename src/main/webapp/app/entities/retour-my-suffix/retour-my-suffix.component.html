@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Retours</span>
+        <button class="btn btn-primary float-right jh-create-entity create-retour-my-suffix" [routerLink]="['/', { outlets: { popup: ['retour-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Retour
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="retours">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Dateretour</span></th>
+            <th><span>Livre</span></th>
+            <th><span>Abonne</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let retour of retours ;trackBy: trackId">
+                <td><a [routerLink]="['../retour-my-suffix', retour.id ]">{{retour.id}}</a></td>
+                <td>{{retour.dateretour | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="retour.livreId">
+                        <a [routerLink]="['../livre-my-suffix', retour.livreId  ]" >{{retour.livreId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="retour.abonneId">
+                        <a [routerLink]="['../abonne-my-suffix', retour.abonneId  ]" >{{retour.abonneId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../retour-my-suffix', retour.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'retour-my-suffix/'+ retour.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'retour-my-suffix/'+ retour.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

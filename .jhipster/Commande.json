@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "administrateur",
+            "otherEntityName": "administrateur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "commande",
+            "relationshipName": "livre",
+            "otherEntityName": "livre",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "fournisseur",
+            "otherEntityName": "fournisseur",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "qtecommande",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "datecommande",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "montant",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20180512153808",
+    "entityTableName": "commande",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

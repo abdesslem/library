@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span>Emprunts</span>
+        <button class="btn btn-primary float-right jh-create-entity create-emprunt-my-suffix" [routerLink]="['/', { outlets: { popup: ['emprunt-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Emprunt
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="emprunts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Dateemprunt</span></th>
+            <th><span>Dateretourlimite</span></th>
+            <th><span>Livre</span></th>
+            <th><span>Abonne</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let emprunt of emprunts ;trackBy: trackId">
+                <td><a [routerLink]="['../emprunt-my-suffix', emprunt.id ]">{{emprunt.id}}</a></td>
+                <td>{{emprunt.dateemprunt | date:'mediumDate'}}</td>
+                <td>{{emprunt.dateretourlimite | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="emprunt.livreId">
+                        <a [routerLink]="['../livre-my-suffix', emprunt.livreId  ]" >{{emprunt.livreId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="emprunt.abonneId">
+                        <a [routerLink]="['../abonne-my-suffix', emprunt.abonneId  ]" >{{emprunt.abonneId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../emprunt-my-suffix', emprunt.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'emprunt-my-suffix/'+ emprunt.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'emprunt-my-suffix/'+ emprunt.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

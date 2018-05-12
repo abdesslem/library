@@ -1,0 +1,38 @@
+
+<div *ngIf="retour">
+    <h2><span>Retour</span> {{retour.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Dateretour</span></dt>
+        <dd>
+            <span>{{retour.dateretour | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Livre</span></dt>
+        <dd>
+            <div *ngIf="retour.livreId">
+                <a [routerLink]="['/livre-my-suffix', retour.livreId]">{{retour.livreId}}</a>
+            </div>
+        </dd>
+        <dt><span>Abonne</span></dt>
+        <dd>
+            <div *ngIf="retour.abonneId">
+                <a [routerLink]="['/abonne-my-suffix', retour.abonneId]">{{retour.abonneId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'retour-my-suffix/'+ retour.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,48 @@
+
+<div *ngIf="livre">
+    <h2><span>Livre</span> {{livre.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Nomlivre</span></dt>
+        <dd>
+            <span>{{livre.nomlivre}}</span>
+        </dd>
+        <dt><span>Auteur</span></dt>
+        <dd>
+            <span>{{livre.auteur}}</span>
+        </dd>
+        <dt><span>Edition</span></dt>
+        <dd>
+            <span>{{livre.edition}}</span>
+        </dd>
+        <dt><span>Dateedition</span></dt>
+        <dd>
+            <span>{{livre.dateedition | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Nbpages</span></dt>
+        <dd>
+            <span>{{livre.nbpages}}</span>
+        </dd>
+        <dt><span>Categorie</span></dt>
+        <dd>
+            <div *ngIf="livre.categorieId">
+                <a [routerLink]="['/categorie-my-suffix', livre.categorieId]">{{livre.categorieId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'livre-my-suffix/'+ livre.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,65 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCommandeLabel">Create or edit a Commande</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!commande.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="commande.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_qtecommande">Qtecommande</label>
+            <input type="number" class="form-control" name="qtecommande" id="field_qtecommande"
+                [(ngModel)]="commande.qtecommande" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_datecommande">Datecommande</label>
+            <div class="input-group">
+                <input id="field_datecommande" type="text" class="form-control" name="datecommande" ngbDatepicker  #datecommandeDp="ngbDatepicker" [(ngModel)]="commande.datecommande"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="datecommandeDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_montant">Montant</label>
+            <input type="number" class="form-control" name="montant" id="field_montant"
+                [(ngModel)]="commande.montant" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_administrateur">Administrateur</label>
+            <select class="form-control" id="field_administrateur" name="administrateur" [(ngModel)]="commande.administrateurId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="administrateurOption.id" *ngFor="let administrateurOption of administrateurs; trackBy: trackAdministrateurById">{{administrateurOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_livre">Livre</label>
+            <select class="form-control" id="field_livre" multiple name="livre" [(ngModel)]="commande.livres">
+                <option [ngValue]="getSelected(commande.livres, livreOption)" *ngFor="let livreOption of livres; trackBy: trackLivreById">{{livreOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_fournisseur">Fournisseur</label>
+            <select class="form-control" id="field_fournisseur" name="fournisseur" [(ngModel)]="commande.fournisseurId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="fournisseurOption.id" *ngFor="let fournisseurOption of fournisseurs; trackBy: trackFournisseurById">{{fournisseurOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
