@@ -1,0 +1,64 @@
+<div>
+    <h2>
+        <span>Abonnes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-abonne-my-suffix" [routerLink]="['/', { outlets: { popup: ['abonne-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Abonne
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="abonnes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Ncin</span></th>
+            <th><span>Nom</span></th>
+            <th><span>Prenom</span></th>
+            <th><span>Datenaissance</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let abonne of abonnes ;trackBy: trackId">
+                <td><a [routerLink]="['../abonne-my-suffix', abonne.id ]">{{abonne.id}}</a></td>
+                <td>{{abonne.ncin}}</td>
+                <td>{{abonne.nom}}</td>
+                <td>{{abonne.prenom}}</td>
+                <td>{{abonne.datenaissance | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../abonne-my-suffix', abonne.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'abonne-my-suffix/'+ abonne.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'abonne-my-suffix/'+ abonne.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -40,6 +40,18 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Administrateur.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Administrateur.class.getName() + ".commandes", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Abonne.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Livre.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Livre.class.getName() + ".commandes", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Categorie.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Retour.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Emprunt.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Commande.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Commande.class.getName() + ".livres", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Fournisseur.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Fournisseur.class.getName() + ".commandes", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,46 @@
+
+<div *ngIf="administrateur">
+    <h2><span>Administrateur</span> {{administrateur.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Login</span></dt>
+        <dd>
+            <span>{{administrateur.login}}</span>
+        </dd>
+        <dt><span>Mdp</span></dt>
+        <dd>
+            <span>{{administrateur.mdp}}</span>
+        </dd>
+        <dt><span>Firstname</span></dt>
+        <dd>
+            <span>{{administrateur.firstname}}</span>
+        </dd>
+        <dt><span>Lastname</span></dt>
+        <dd>
+            <span>{{administrateur.lastname}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{administrateur.email}}</span>
+        </dd>
+        <dt><span>Adresse</span></dt>
+        <dd>
+            <span>{{administrateur.adresse}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'administrateur-my-suffix/'+ administrateur.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

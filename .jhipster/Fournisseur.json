@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "commande",
+            "otherEntityName": "commande",
+            "otherEntityRelationshipName": "fournisseur"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nomfournisseur",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adressefournisseur",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180512153809",
+    "entityTableName": "fournisseur",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

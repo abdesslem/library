@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "categorie",
+            "otherEntityName": "categorie",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "commande",
+            "otherEntityName": "commande",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "livre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nomlivre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "auteur",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "edition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateedition",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "nbpages",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180512153804",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "livre",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

@@ -1,0 +1,59 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myEmpruntLabel">Create or edit a Emprunt</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!emprunt.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="emprunt.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dateemprunt" ngbTooltip="The firstname attribute.">Dateemprunt</label>
+            <div class="input-group">
+                <input id="field_dateemprunt" type="text" class="form-control" name="dateemprunt" ngbDatepicker  #dateempruntDp="ngbDatepicker" [(ngModel)]="emprunt.dateemprunt"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateempruntDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_dateretourlimite">Dateretourlimite</label>
+            <div class="input-group">
+                <input id="field_dateretourlimite" type="text" class="form-control" name="dateretourlimite" ngbDatepicker  #dateretourlimiteDp="ngbDatepicker" [(ngModel)]="emprunt.dateretourlimite"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="dateretourlimiteDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_livre">Livre</label>
+            <select class="form-control" id="field_livre" name="livre" [(ngModel)]="emprunt.livreId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="livreOption.id" *ngFor="let livreOption of livres; trackBy: trackLivreById">{{livreOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_abonne">Abonne</label>
+            <select class="form-control" id="field_abonne" name="abonne" [(ngModel)]="emprunt.abonneId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="abonneOption.id" *ngFor="let abonneOption of abonnes; trackBy: trackAbonneById">{{abonneOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
